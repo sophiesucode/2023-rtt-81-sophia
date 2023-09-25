@@ -174,7 +174,87 @@ public class StringMethodsHW {
 
 
 
-	                
+//	               12.contains() method:
+//	               The contains() method checks whether the specified string (sequence of characters) 
+//	               is present in the string or not.
+
+	            	   
+	            	
+	            	       String str1111 = "Learn Java";
+	            	       Boolean result11;
+
+	            	       // check if str1 contains "Java"
+	            	       result11 = str1111.contains("Java");
+	            	       System.out.println(result11);  // true
+
+	            	       // check if str1 contains "Python"
+	            	       result11 = str1111.contains("Python");
+	            	       System.out.println(result11);  // false
+
+	            	       // check if str1 contains ""
+	            	       result11 = str1111.contains("");
+
+	            	       System.out.println(result11);  // true
+	            	    
+	            	   
+
+//	            	      13.) replace() method
+//	            	       The replace() method replaces each matching occurrence of the old character/text in the string with the new character/text.
+//
+//
+//	            	       The syntax of the replace() method is either:
+//	            	       stringobj.replace(char oldChar, char newChar)
+//	            	       or
+//	            	       stringobj.replace(CharSequence oldText, CharSequence newText)
+//	            	       Here, stringobj is an object of the String class.
+
+
+	            	     
+	            	           String str11111 = "abc cba";
+
+	            	           // all occurrences of 'a' is replaced with 'z'
+	            	           System.out.println(str11111.replace('a', 'z'));  
+
+	            	           // all occurences of 'L' is replaced with 'J'
+	            	           System.out.println("Lava".replace('L', 'J'));  
+	            	           // character not in the string
+	            	           System.out.println("Hello".replace('4', 'J')); 
+	            	       // all occurrences of "C++" is replaced with "Java"
+	            	           System.out.println(str11111.replace("C++", "Java"));  
+
+	            	           // all occurences of "aa" is replaced with "zz"
+	            	           System.out.println("aa bb aa zz".replace("aa", "zz"));
+
+	            	           // substring not in the string
+	            	           System.out.println("Java".replace("C++", "C")); 
+	            	        
+
+
+	            	   
+	            	      // Note: If the substring to be replaced is not in the string, replace() returns the original string.
+
+//	            	      14.) Java String replaceAll()
+//
+//	            	       The replaceAll() method replaces each substring that matches the regex of the string with the specified text.
+//	            	       The syntax of the replaceAll() method is:
+//
+//	            	       string.replaceAll(String regex, String replacement)
+//	            	       regex - a regex (can be a typical string) that is to be replaced
+//	            	       replacement - matching substrings are replaced with this string
+//	            	       Create a class named DemoReplaceAll and add the code below to it.
+	            	      
+	            	           String str222 = "Java123is456fun";
+
+	            	           // regex for sequence of digits
+	            	           String regex = "\\d+";
+
+	            	           // replace all occurrences of numeric
+	            	           // digits by a space
+	            	           System.out.println(str222.replaceAll(regex, " "));
+	            	      
+
+
+
 
 	        	
 	        	
