@@ -253,16 +253,43 @@ public class StringMethodsHW {
 	            	           System.out.println(str222.replaceAll(regex, " "));
 	            	      
 
+//	            	          15.) By Using equals() Method
+//	            	           The String class's equals() method compares the original content of the string. It compares the values of strings for equality. 
+//	            	           Create a class named TestStringComparison and add the code below to it.
 
+	            	           String s11="PerScholas";
+	            	           String s21="PerScholas";
+	            	           String s31=new String("PerScholas");
+	            	           String s4="Teksystem";
+	            	           System.out.println(s11.equals(s21));//true
+	            	           System.out.println(s11.equals(s31));//true 
+	            	           System.out.println(s11.equals(s4));//false
+	            	           
+//	            	           16.)By Using == operator 
+//	            	        		   The == operator compares references, not values.
+//	            	        		   Create a class named Teststringcomparison2.java and write the code below to it. 
+//
+//
+	            	           String s111="Perscholas";
+	            	           String s211="Perscholas";
+	            	           String s311=new String("Perscholas");
+	            	           System.out.println(s111==s211);//true (because both refer to same instance)
+	            	           System.out.println(s111==s311);//false(because s3 refers to instance created in nonpool)
 
+	        	
+//	            	           By Using compareTo() method,
+//	            	           The String class's compareTo() method compares values lexicographically. It returns an integer value that describes if the first string is less than, equal to, or greater than the second string.
+//	            	           // return 0 if this string is the same as another;
+//	            	           // <0 if lexicographically less than another; or >0
 
-	        	
-	        	
-	        	
-	        	
-	        	
+	            	           String s1111="Perscholas";
+	            	           String s2111="Perscholas";
+	            	           String s3111="Perschola";
+	            	           String s41="PerscholasX";
+	            	           System.out.println(s1111.compareTo(s2111)); //0
+	            	           System.out.println(s1111.compareTo(s3111)); // 1(because s1>s3)
+	            	           System.out.println(s1111.compareTo(s41)); // -1(because s1<s4 )
 
-	        	
 
 
 
