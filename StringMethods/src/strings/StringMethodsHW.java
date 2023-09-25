@@ -1,7 +1,8 @@
 package strings;
+
 import java.util.Arrays;
 
-public class StringMethods {
+public class StringMethodsHW {
 	public static void main(String[] args) {
 		
 		/*1.) length() method
