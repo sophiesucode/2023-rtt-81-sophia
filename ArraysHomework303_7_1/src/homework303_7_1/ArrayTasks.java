@@ -130,7 +130,7 @@ public static void main(String[] args) {
 	int [] array= {4,2,9,13,1,0};
 	
 	Arrays.sort(array);
-	
+	//try sorting without using sort method
 	System.out.println(Arrays.toString(array));
 	
 	System.out.println("The smallest number is "+array[0] );
@@ -140,8 +140,13 @@ public static void main(String[] args) {
 	
 	
 	
+	
+	
 //   Task 10: Create an array that includes an integer, 3 strings, and 1 double. Print the array.
 	 
-
+	Object [] mixedTypes = {4,"apple","paper","bubbles",2.0};
+	for(Object element:mixedTypes) {
+		System.out.println(element);
+	}
 }
 }
