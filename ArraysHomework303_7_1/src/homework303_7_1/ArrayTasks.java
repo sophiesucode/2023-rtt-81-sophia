@@ -138,10 +138,6 @@ public static void main(String[] args) {
 	
 	
 	
-	
-	
-	
-	
 //   Task 10: Create an array that includes an integer, 3 strings, and 1 double. Print the array.
 	 
 	Object [] mixedTypes = {4,"apple","paper","bubbles",2.0};
