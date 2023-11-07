@@ -16,11 +16,7 @@ import com.suleman.sms.jpa.entitymodels.Student;
 
 public class StudentService implements StudentDao {
 
-//	@Override
-//	public List<Course> getAllCourses() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+
 
 	@Override
 	public List<Student> getAllStudents() {
@@ -58,7 +54,7 @@ public class StudentService implements StudentDao {
 	@Override
 	public boolean validateStudent(String sEmail, String password) {
 		
-		Session session = HibernateService.getConnection();
+		try{Session session = HibernateService.getConnection();
 		Transaction t= null;
 		 t = session.beginTransaction();
 		Student student = session.get(Student.class, sEmail);
@@ -69,11 +65,13 @@ public class StudentService implements StudentDao {
 		
 	
 		return false;
-	}
+	}catch(Exception e) {
+		throw e;
+	}}
 
 	@Override
 	public void registerStudentToCourse(String sEmail, int cId) {
-		Session session = HibernateService.getConnection();
+		try{Session session = HibernateService.getConnection();
 		Transaction t= null;
 		 t = session.beginTransaction();
 		 
@@ -88,7 +86,9 @@ public class StudentService implements StudentDao {
 		 
 		 t.commit();
 		 session.close();
-		 
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
 		
 	}
 

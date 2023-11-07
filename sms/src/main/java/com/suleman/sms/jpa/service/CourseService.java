@@ -13,7 +13,7 @@ public class CourseService implements CourseDao {
 
 	@Override
 	public List<Course> getAllCourses() {
-		Session session = HibernateService.getConnection();
+		try{Session session = HibernateService.getConnection();
 		Transaction t= null;
 		 t = session.beginTransaction();
 		List<Course> courses= null;
@@ -29,6 +29,11 @@ public class CourseService implements CourseDao {
 	     t.commit();
 	     session.close();
 		return courses;
+	}catch(Exception e) {
+		throw e;
+	}
+	
+		
 	}
 
 }
