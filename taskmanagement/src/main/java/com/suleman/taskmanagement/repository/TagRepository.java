@@ -1,2 +1,4 @@
-package com.suleman.taskmanagement.repository;public class TagRepository {
+package com.suleman.taskmanagement.repository;
+
+public class TagRepository {
 }

@@ -35,11 +35,15 @@ public static void main(String[] args) {
 	for(int i=0; i<faveThings.length;i++) {
 		
 		System.out.println("Enter a fave thing of yours: ");
+		
 		faveThing=scan.next();
 		
 		faveThings[i]=faveThing;
+		
+		
 	
 	}
+	scan.close();
 	//System.out.println(Arrays.toString(faveThings));
 	
 	for(String fave:faveThings) {

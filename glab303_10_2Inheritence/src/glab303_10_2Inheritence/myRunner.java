@@ -1,5 +1,6 @@
 package glab303_10_2Inheritence;
 
+
 public class myRunner {
 	   public static void main(String[] args) {
 	       Circle c = new Circle(100);
@@ -9,7 +10,7 @@ public class myRunner {
 	       // declaration of object variable obj of the Shape class
 
 	      // Shape sObj ; // object creation of the Shape class
-	       Shape sObj = new Shape();
+	       Shapes sObj = new Shapes();
 	       sObj.displayshapName();
 	       System.out.println(sObj instanceof Shape); // true
 
@@ -18,7 +19,7 @@ public class myRunner {
 	       System.out.println("+++++++++");
 
 	       // it’s fine because a Circle is a Shape by inheritance
-	       Shape shapeCircleObj = new Circle(100);  // UpCasting
+	       Shapes shapeCircleObj = new Circle(100);  // UpCasting
 	       shapeCircleObj.displayshapName();
 	       System.out.println("Area of Circle " + shapeCircleObj.getArea());
 	       System.out.println(shapeCircleObj);  // Run circle's toString()
@@ -27,7 +28,7 @@ public class myRunner {
 	       System.out.println(sObj instanceof Circle); // false because Shape is not a Circle
 
 	       System.out.println("--------------------");
-	       Shape shapeRectangleObj = new Rectangle("Red"); //UpCasting
+	       Shapes shapeRectangleObj = new Rectangle("Red"); //UpCasting
 	       shapeRectangleObj.displayshapName();
 	       shapeRectangleObj.setHeight(2);
 	       shapeRectangleObj.setWidth(2);
@@ -38,7 +39,7 @@ public class myRunner {
 	       System.out.println(sObj instanceof Rectangle); // false because Shape is not a Rectangle
 
 	       System.out.println("--------------------");
-	       Shape shapeTriangleObj = new Triangle("Blue"); //UpCasting
+	       Shapes shapeTriangleObj = new Triangle("Blue"); //UpCasting
 	       shapeTriangleObj.displayshapName();
 	       shapeTriangleObj.setHeight(2);
 	       shapeTriangleObj.setBase(3);

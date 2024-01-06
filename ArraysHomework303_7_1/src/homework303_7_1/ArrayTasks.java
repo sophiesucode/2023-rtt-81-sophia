@@ -109,13 +109,17 @@ public static void main(String[] args) {
 
 	String[] sports= {"baseball","basketball","golf","tennis","polo"};
 	
-	for(int i=0; i<sports.length;i++) {
-		String placeholder=sports[0];
+//	for(int i=0; i<sports.length;i++) {
+//		String placeholder=sports[0];
+//	sports[0]=sports[sports.length/2];
+//	sports[sports.length/2]=placeholder;
+//	
+//		
+//	}
+	
+	String placeholder=sports[0];
 	sports[0]=sports[sports.length/2];
 	sports[sports.length/2]=placeholder;
-	
-		
-	}
 	System.out.println(Arrays.toString(sports));
 	
 	

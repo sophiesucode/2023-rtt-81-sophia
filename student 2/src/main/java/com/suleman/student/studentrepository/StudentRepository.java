@@ -1,4 +1,4 @@
-package com.suleman.student.repository;
+package com.suleman.student.studentrepository;
 
 import com.suleman.student.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,4 +1,4 @@
-package com.suleman.SMS.jpa.entitymodels;
+package com.suleman.SMSold.jpa.entitymodels;
 
 import java.io.Serializable;
 import java.util.List;
@@ -31,10 +31,10 @@ public class Student implements Serializable {
 	
 	@ManyToMany //a student can have many courses and 1 course can have many students
 	 @JoinTable(
-            name = "StudentCourses",
-            joinColumns = @JoinColumn(name = "email"),
-            inverseJoinColumns = @JoinColumn(name = "id")
-    )
+           name = "StudentCourses",
+           joinColumns = @JoinColumn(name = "email"),
+           inverseJoinColumns = @JoinColumn(name = "id")
+   )
 	private List<Course> sCourses;//list of courses student has
 
 	
