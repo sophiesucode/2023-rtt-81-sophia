@@ -45,10 +45,13 @@ public class Job {
         this.imgUrl = imgUrl;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "employer_id")
+    private Employer employer;
 
-//    private Employer employer;
-//
-//    private Category category;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
 
 }
