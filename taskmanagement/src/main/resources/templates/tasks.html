@@ -1,0 +1,353 @@
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    &lt;!&ndash; Include necessary CSS stylesheets and JavaScript libraries &ndash;&gt;-->
+
+<!--    &lt;!&ndash; Add links to Bootstrap for styling and jQuery for drag-and-drop &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+<!--    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable/lib/index.umd.min.js"></script>-->
+
+<!--    <style>-->
+<!--        /* Add your custom CSS styles for the Kanban board */-->
+<!--        .kanban-container {-->
+<!--            display: flex;-->
+<!--            justify-content: space-around;-->
+<!--        }-->
+
+<!--        .kanban-column {-->
+<!--            flex: 1;-->
+<!--            min-width: 300px;-->
+<!--            margin: 10px;-->
+<!--            padding: 10px;-->
+<!--            border: 1px solid #ddd;-->
+<!--            border-radius: 5px;-->
+<!--            background-color: #f9f9f9;-->
+<!--        }-->
+
+<!--        .task {-->
+<!--            margin: 0 0 10px 0;-->
+<!--            padding: 10px;-->
+<!--            background-color: #fff;-->
+<!--            border: 1px solid #ddd;-->
+<!--            border-radius: 5px;-->
+<!--            cursor: grab;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="container mt-4">-->
+<!--    <h2>Kanban Board</h2>-->
+
+<!--    &lt;!&ndash; Kanban board structure &ndash;&gt;-->
+<!--    <div class="kanban-container">-->
+<!--        <div class="kanban-column" id="column1">-->
+<!--            <h4>To Do</h4>-->
+<!--            &lt;!&ndash; Thymeleaf iteration for tasks in 'To Do' column &ndash;&gt;-->
+<!--            <div th:each="task : ${tasksToDo}" class="task" th:id="${'task-' + task.id}">-->
+<!--                <span th:text="${task.title}"></span>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="kanban-column" id="column2">-->
+<!--            <h4>In Progress</h4>-->
+<!--            &lt;!&ndash; Thymeleaf iteration for tasks in 'In Progress' column &ndash;&gt;-->
+<!--            <div th:each="task : ${tasksInProgress}" class="task" th:id="${'task-' + task.id}">-->
+<!--                <span th:text="${task.title}"></span>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="kanban-column" id="column3">-->
+<!--            <h4>Done</h4>-->
+<!--            &lt;!&ndash; Thymeleaf iteration for tasks in 'Done' column &ndash;&gt;-->
+<!--            <div th:each="task : ${tasksDone}" class="task" th:id="${'task-' + task.id}">-->
+<!--                <span th:text="${task.title}"></span>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; JavaScript for drag-and-drop functionality &ndash;&gt;-->
+<!--<script th:inline="javascript">-->
+<!--    // Initialize the Draggable library-->
+<!--    const containers = document.querySelectorAll('.kanban-column');-->
+<!--    const draggable = new Draggable.Droppable(containers, {-->
+<!--        draggable: '.task',-->
+<!--        dropzone: '.kanban-column'-->
+<!--    });-->
+<!--</script>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Kanban Board</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include your JavaScript link here -->
+</head>
+<body>
+
+<div class="container-fluid mt-3">
+
+    <h2 class="text-center">Kanban Board</h2>
+
+    <div class="row">
+
+        <div class="col-md-4" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="card-title">To Do</h3>
+                </div>
+                <div class="card-body" id="todo-column">
+                    <!-- Display tasks in the "To Do" column -->
+                    <!-- Thymeleaf iteration example, adjust as needed -->
+                    <div th:each="task : ${tasks}" draggable="true" ondragstart="drag(event)">
+                        <div class="card mb-2">
+                            <div class="card-body" th:text="${task.title}"></div>
+                            <!-- Display other task details as needed -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div class="card">
+                <div class="card-header bg-warning">
+                    <h3 class="card-title">In Progress</h3>
+                </div>
+                <div class="card-body" id="in-progress-column">
+                    <!-- Display tasks in the "In Progress" column -->
+                    <!-- Thymeleaf iteration example, adjust as needed -->
+                    <div th:each="task : ${tasks}" draggable="true" ondragstart="drag(event)">
+                        <!-- Check task status and display in the appropriate column -->
+                        <div th:if="${task.status == 'IN_PROGRESS'}">
+                            <div class="card mb-2">
+                                <div class="card-body" th:text="${task.title}"></div>
+                                <!-- Display other task details as needed -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h3 class="card-title">Done</h3>
+                </div>
+                <div class="card-body" id="done-column">
+                    <!-- Display tasks in the "Done" column -->
+                    <!-- Thymeleaf iteration example, adjust as needed -->
+                    <div th:each="task : ${tasks}" draggable="true" ondragstart="drag(event)">
+                        <!-- Check task status and display in the appropriate column -->
+                        <div th:if="${task.status == 'DONE'}">
+                            <div class="card mb-2">
+                                <div class="card-body" th:text="${title}"></div>
+                                <!-- Display other task details as needed -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Form for creating tasks -->
+    <h2 class="mt-4">Create a Task</h2>
+    <form th:action="@{/tasks}" method="post">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" class="form-control" id="title" name="title"     th:field="*{task.title}" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea class="form-control" id="description" name="description" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="dueDate">Due Date:</label>
+            <input type="text" class="form-control" id="dueDate" name="dueDate" placeholder="YYYY-MM-DD" required>
+        </div>
+        <div class="form-group">
+            <label for="priority">Priority:</label>
+            <input type="text" class="form-control" id="priority" name="priority" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Task</button>
+    </form>
+
+</div>
+
+<!-- Include your JavaScript link here -->
+<script>
+    function allowDrop(event) {
+        event.preventDefault();
+    }
+
+    function drag(event) {
+        event.dataTransfer.setData("text", event.target.innerText);
+    }
+
+    function drop(event) {
+        event.preventDefault();
+        const data = event.dataTransfer.getData("text");
+        const draggedElement = document.createElement("div");
+        draggedElement.className = "card mb-2";
+        draggedElement.innerHTML = '<div class="card-body">' + data + '</div>';
+        event.target.appendChild(draggedElement);
+    }
+</script>
+
+</body>
+</html>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Task Management Application</title>-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"-->
+<!--          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">-->
+<!--    <style>-->
+<!--        body {-->
+<!--            background-color: #f8f9fa; /* Light Gray background */-->
+<!--        }-->
+
+<!--        nav {-->
+<!--            background-color: #343a40 !important; /* Dark Gray navbar background */-->
+<!--        }-->
+
+<!--        .navbar-brand,-->
+<!--        .nav-link {-->
+<!--            color: #007bff !important; /* Blue text */-->
+<!--        }-->
+
+<!--        .navbar-toggler-icon {-->
+<!--            background-color: #007bff; /* Blue navbar toggler icon */-->
+<!--        }-->
+
+<!--        .container {-->
+<!--            background-color: #ffffff; /* White container background */-->
+<!--            border-radius: 10px; /* Rounded corners */-->
+<!--            margin-top: 20px; /* Top margin */-->
+<!--            padding: 20px; /* Padding */-->
+<!--            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow */-->
+<!--        }-->
+
+<!--        .kanban-board {-->
+<!--            display: flex;-->
+<!--            overflow-x: auto;-->
+<!--            max-width: 100%;-->
+<!--            gap: 10px;-->
+<!--        }-->
+
+<!--        .kanban-column {-->
+<!--            flex: 0 0 300px;-->
+<!--            background-color: #ffffff;-->
+<!--            border-radius: 5px;-->
+<!--            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);-->
+<!--            padding: 10px;-->
+<!--        }-->
+
+<!--        .kanban-column h2 {-->
+<!--            color: #343a40; /* Dark Gray text */-->
+<!--        }-->
+
+<!--        .kanban-card {-->
+<!--            background-color: #007bff; /* Blue card background */-->
+<!--            color: #ffffff; /* White text */-->
+<!--            border-radius: 5px;-->
+<!--            padding: 10px;-->
+<!--            margin-bottom: 10px;-->
+<!--            cursor: grab;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark">-->
+<!--    <div class="container-fluid">-->
+<!--        <a class="navbar-brand" th:href="@{/index}">Task Management Application</a>-->
+<!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"-->
+<!--                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--        <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--            <ul class="navbar-nav me-auto mb-2 mb-lg-0">-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link active" aria-current="page" th:href="@{/logout}">Logout</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+<!--<div class="container mt-4">-->
+<!--    <div class="kanban-board">-->
+<!--        <div class="kanban-column">-->
+<!--            <h2>To Do</h2>-->
+<!--            <div class="kanban-card" draggable="true" id="task1">Task 1</div>-->
+<!--            <div class="kanban-card" draggable="true" id="task2">Task 2</div>-->
+<!--        </div>-->
+<!--        <div class="kanban-column">-->
+<!--            <h2>In Progress</h2>-->
+<!--            <div class="kanban-card" draggable="true" id="task3">Task 3</div>-->
+<!--        </div>-->
+<!--        <div class="kanban-column">-->
+<!--            <h2>Done</h2>-->
+<!--            <div class="kanban-card" draggable="true" id="task4">Task 4</div>-->
+<!--            <div class="kanban-card" draggable="true" id="task5">Task 5</div>-->
+<!--        </div>-->
+
+<!--    </div>-->
+<!--    <form th:action="@{/tasks/create}" th:object="${newTask}" method="post">-->
+<!--        <input type="text" th:field="*{task.title}" placeholder="Task Title" required />-->
+<!--        <input type="text" th:field="*{task.description}" placeholder="Task Description" required />-->
+<!--        <button type="submit">Add Task</button>-->
+<!--    </form>-->
+<!--</div>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"-->
+<!--        integrity="sha384-cb4U15ww8ccOtBTE4XKR1MAAw1iM0cr9LQMe5cIGDeMsl7fe/ZgP0bWLL5gMII93" crossorigin="anonymous"></script>-->
+<!--<script>-->
+<!--    document.addEventListener('DOMContentLoaded', function () {-->
+<!--        const cards = document.querySelectorAll('.kanban-card');-->
+<!--        cards.forEach(card => {-->
+<!--            card.addEventListener('dragstart', () => {-->
+<!--                card.classList.add('dragging');-->
+<!--            });-->
+<!--            card.addEventListener('dragend', () => {-->
+<!--                card.classList.remove('dragging');-->
+<!--            });-->
+<!--        });-->
+<!--        const columns = document.querySelectorAll('.kanban-column');-->
+<!--        columns.forEach(column => {-->
+<!--            column.addEventListener('dragover', e => {-->
+<!--                e.preventDefault();-->
+<!--                const afterElement = getDragAfterElement(column, e.clientY);-->
+<!--                const dragging = document.querySelector('.dragging');-->
+<!--                if (afterElement == null) {-->
+<!--                    column.appendChild(dragging);-->
+<!--                } else {-->
+<!--                    column.insertBefore(dragging, afterElement);-->
+<!--                }-->
+<!--            });-->
+<!--        });-->
+<!--        function getDragAfterElement(container, y) {-->
+<!--            const draggableElements = [...container.querySelectorAll('.kanban-card:not(.dragging)')];-->
+<!--            return draggableElements.reduce((closest, child) => {-->
+<!--                const box = child.getBoundingClientRect();-->
+<!--                const offset = y - box.top - box.height / 2;-->
+<!--                if (offset < 0 && offset > closest.offset) {-->
+<!--                    return { offset: offset, element: child };-->
+<!--                } else {-->
+<!--                    return closest;-->
+<!--                }-->
+<!--            }, { offset: Number.NEGATIVE_INFINITY }).element;-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
