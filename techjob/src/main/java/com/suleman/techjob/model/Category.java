@@ -18,8 +18,9 @@ public class Category {
 
     private String name;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     private List<Job> jobList;
+
 
     public Category() {
         super();

@@ -1,10 +1,13 @@
 package com.suleman.techjob.repository;
 
-import com.suleman.techjob.model.User;
+import com.suleman.techjob.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User,Long> {
-    User findByEmail(String email);
+public interface RoleRepository extends JpaRepository<Role,Long> {
+
+    Role findByName(String name);
+
+
 }

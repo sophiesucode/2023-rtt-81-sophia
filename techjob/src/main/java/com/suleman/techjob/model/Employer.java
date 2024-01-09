@@ -21,7 +21,7 @@ public class Employer {
     @Column
     private String name;
 
-    @OneToMany(mappedBy = "employer")
+    @OneToMany(mappedBy = "employer",fetch = FetchType.EAGER)
     private List<Job> jobList;
 
     public Employer(String name, List<Job> jobList) {
