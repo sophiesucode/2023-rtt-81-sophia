@@ -2,6 +2,11 @@ package com.suleman.techjob.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+/**
+ * The Job class represents a job listing in the DiversityTech Job Board.
+ * It contains information about the job title, company, salary, and other details.
+ * This class is part of the model layer and is used to store job-related data.
+ */
 
 @Entity
 @Getter
@@ -45,9 +50,10 @@ public class Job {
         this.imgUrl = imgUrl;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "employer_id")
     private Employer employer;
+
 
     @ManyToOne
     @JoinColumn(name = "category_id")

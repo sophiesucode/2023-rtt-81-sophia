@@ -5,7 +5,10 @@ import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Represents a user in the system with a unique identifier, username, email, and password.
+ * Users can be associated with multiple roles for authorization.
+ */
 @Setter
 @Getter
 @ToString

@@ -11,7 +11,7 @@ public interface JobRepository extends JpaRepository<Job,Long> {
 
 
 
-    Job findJobByTitle(String title);
+    Job findByJobTitle(String title);
 
     List<Job> findAllByCategoryId(Long categoryId);
 }

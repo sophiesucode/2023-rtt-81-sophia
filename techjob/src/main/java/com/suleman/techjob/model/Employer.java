@@ -6,7 +6,11 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import java.util.List;
-
+/**
+ * The Employer class represents an employer entity in the DiversityTech Job Board.
+ * Employers are associated with job listings and can have multiple jobs listed.
+ * This class is used to store employer-related data.
+ */
 @Entity
 @Getter
 @Setter

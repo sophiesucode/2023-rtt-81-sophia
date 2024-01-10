@@ -18,7 +18,7 @@ public class Category {
 
     private String name;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "category")
     private List<Job> jobList;
 
 

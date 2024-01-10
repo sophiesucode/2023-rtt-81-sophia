@@ -6,6 +6,9 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents a user role in the system with a unique identifier, name, and associated users.
+ */
 @Setter
 @Getter
 @ToString

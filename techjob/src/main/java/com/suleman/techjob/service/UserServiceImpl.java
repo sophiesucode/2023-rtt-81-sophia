@@ -4,7 +4,7 @@ import com.suleman.techjob.model.Role;
 import com.suleman.techjob.model.User;
 import com.suleman.techjob.repository.RoleRepository;
 import com.suleman.techjob.repository.UserRepository;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -16,19 +16,19 @@ public class UserServiceImpl implements UserService{
     private UserRepository userRepository;
 
     private RoleRepository roleRepository;
-    private PasswordEncoder passwordEncoder;
+//    private PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
-        this.passwordEncoder = passwordEncoder;
+//        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public void saveUser(User user) {
         user.setUsername(user.getUsername());
         user.setEmail(user.getEmail());
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+      //  user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         Role role = checkRoleExist();
         user.setRoles(Arrays.asList(role));

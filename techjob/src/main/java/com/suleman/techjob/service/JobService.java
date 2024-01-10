@@ -24,7 +24,7 @@ public class JobService {
     }
 
     public Job createJob(Job jobObject) {
-        Job job = jobRepository.findJobByTitle(jobObject.getJobTitle());
+        Job job = jobRepository.findByJobTitle(jobObject.getJobTitle());
         return jobRepository.save(jobObject);
     }
 
@@ -49,6 +49,9 @@ public class JobService {
             updateJob.setJobDescription(jobObject.getJobDescription());
             updateJob.setCompany(jobObject.getCompany());
             updateJob.setLocation(jobObject.getLocation());
+            updateJob.setCategory(jobObject.getCategory());
+            updateJob.setUrl(jobObject.getUrl());
+            updateJob.setImgUrl(jobObject.getImgUrl());
 
             return jobRepository.save(updateJob);
         }else{
